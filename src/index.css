@@ -19,7 +19,8 @@ input::-webkit-inner-spin-button {
 
 @media (max-width: 414px) {
   .toast-custom {
-    width: 70% !important; 
-    margin:50px 0 0  auto;  
+    width: 80% !important; 
+    margin:0 0 0  auto;  
+    font-size: 15px;
   }
 }

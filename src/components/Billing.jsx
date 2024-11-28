@@ -47,6 +47,7 @@ const Billing = () => {
       toast.warn(
         `Only ${selectedProduct.productQuantity} units available in stock`,
         {
+          className: "toast-custom",
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -138,19 +139,29 @@ const Billing = () => {
     localStorage.setItem("Sales", JSON.stringify([...existingSales, saleData]));
     localStorage.setItem("ProductList", JSON.stringify(updatedProducts));
 
-    toast.success("Payment successful! Sale saved.");
+    toast.success("Payment successful! Sale saved.", {
+        className: "toast-custom",
+        position: "top-right",
+        autoClose: 5000,
+        
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
     setTimeout(() => navigate("/sales"), 2000);
   };
 
   return (
     <div>
       <div className="w-full flex justify-center md:py-0 py-6">
-        <div className="w-5/6 lg:mt-24 mt-16 p-5 bg-white shadow-sm shadow-violet-400  border border-gray-200">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6">Bill To</h2>
+        <div className="w-5/6 lg:mt-24 md:mt-20 mt-12 p-5 bg-white shadow-sm shadow-violet-400  border border-gray-200">
+          <h2 className="lg:text-2xl md:text-xl text-lg font-semibold text-gray-800 mb-6">Bill To</h2>
 
           <div className="w-full mb-6">
-            <div className="w-full h-full  flex items-center gap-2">
-              <label className="font-semibold ">Date : </label>
+            <div className="text-end h-full ">
+              <label className="font-semibold tracking-wider">DATE </label>
               <input
                 type="text"
                 name="name"
@@ -162,7 +173,7 @@ const Billing = () => {
                     date: customerDetails.date,
                   }))
                 }
-                className="outline-none  placeholder:tracking-wider"
+                className="w-full text-end outline-none  placeholder:tracking-wider"
                 placeholder="Enter customer name"
               />
             </div>

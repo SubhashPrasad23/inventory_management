@@ -4,11 +4,19 @@ import { useEffect, useState } from "react";
 
 const Sales = () => {
   const [salesList, setSalesList] = useState([]);
+
+
+
+
   useEffect(() => {
     const getSalesData = JSON.parse(localStorage.getItem("Sales")) || [];
     setSalesList(getSalesData);
   }, []);
 
+
+
+
+  
   if (!salesList.length) {
     return (
       <div className="h-screen ">
@@ -22,7 +30,7 @@ const Sales = () => {
   }
   return (
     <div className=" w-full flex items-center justify-center">
-      <div className="w-11/12 lg:mt-24 mt-16 md:py-0 py-6  overflow-x-auto">
+      <div className="w-11/12 lg:mt-24 md:mt-20 mt-12 md:py-0 py-6  overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-800 shadow-sm shadow-violet-400  border">
           <thead className="bg-violet-500  text-white tracking-wider">
             <tr>
