@@ -8,7 +8,7 @@ const Billing = () => {
   const [customerDetails, setCustomerDetails] = useState({
     name: "",
     address: "",
-    date: new Date().toISOString().split("T")[0],
+    date: new Date().toLocaleDateString()
   });
   const [rows, setRows] = useState([
     { id: 1, productName: "", salePrice: "", quantity: "", itemTotal: 0 },
@@ -143,32 +143,16 @@ const Billing = () => {
   };
 
   return (
-    <div className="h-full w-full ">
-      <div className="w-full flex items-center justify-between shadow-xl p-4   mb-6">
-        <h4 className="font-semibold text-2xl text-gray-800">Biiling Information</h4>
-        <div className="text-gray-600">
-          <div className="text-lg font-medium">
-            {new Date().toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </div>
-          <div className="text-sm font-light">
-            {new Date().toLocaleDateString()}
-          </div>
-        </div>
-      </div>
-
-      <div className="flex justify-center p-4">
-        <div className="lg:w-3/4 w-full p-6 bg-white shadow-sm shadow-violet-400  border border-gray-200">
+    <div>
+      <div className="w-full flex justify-center md:py-0 py-6">
+        <div className="w-5/6 lg:mt-24 mt-16 p-5 bg-white shadow-sm shadow-violet-400  border border-gray-200">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6">Bill To</h2>
 
           <div className="w-full mb-6">
-            <div className="w-full h-full  md:text-end ">
-              <label className="font-semibold">Date : </label>
+            <div className="w-full h-full  flex items-center gap-2">
+              <label className="font-semibold ">Date : </label>
               <input
-                type="date"
+                type="text"
                 name="name"
                 readOnly
                 value={customerDetails.date}
@@ -178,12 +162,12 @@ const Billing = () => {
                     date: customerDetails.date,
                   }))
                 }
-                className="  border-gray-300  focus:outline-none  placeholder:tracking-wider"
+                className="outline-none  placeholder:tracking-wider"
                 placeholder="Enter customer name"
               />
             </div>
 
-            <div className="md:w-1/4 w-full">
+            <div className="w-full">
               <input
                 type="text"
                 name="name"
@@ -194,11 +178,11 @@ const Billing = () => {
                     name: e.target.value,
                   }))
                 }
-                className="w-full py-2 mt-2 border-b-2 border-gray-300  focus:outline-none  placeholder:tracking-wider"
+                className="xl:w-2/6 lg:w-2/4 md:w-2/4  w-full mt-2 py-1  border-b-2 border-gray-300  focus:outline-none  placeholder:tracking-wider"
                 placeholder="Enter customer name"
               />
             </div>
-            <div className="md:w-2/6 w-full">
+            <div className="w-full">
               <input
                 type="text"
                 name="address"
@@ -209,7 +193,7 @@ const Billing = () => {
                     address: e.target.value,
                   }))
                 }
-                className="w-full py-2 mt-2 border-b-2 border-gray-300 focus:outline-none placeholder:tracking-wider"
+                className="xl:w-2/6 lg:w-2/4 md:w-2/4  w-full mt-2 py-1  border-b-2 border-gray-300 focus:outline-none placeholder:tracking-wider"
                 placeholder="Enter address"
               />
             </div>
@@ -308,7 +292,7 @@ const Billing = () => {
                 Order Total
               </span>
               <span className="text-lg font-semibold text-gray-900">
-              Rs  {calculateOrderTotal().toFixed(2)}
+                Rs {calculateOrderTotal().toFixed(2)}
               </span>
             </div>
             <button

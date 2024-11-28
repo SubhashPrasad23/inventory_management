@@ -12,24 +12,7 @@ const Sales = () => {
   if (!salesList.length) {
     return (
       <div className="h-screen ">
-        <div className="w-full flex items-center justify-between shadow-xl p-4  mb-6">
-          <h4 className="font-semibold text-2xl text-gray-800">
-           Order Summary
-          </h4>
-          <div className="text-gray-600">
-            <div className="text-lg font-medium">
-              {new Date().toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: true,
-              })}
-            </div>
-            <div className="text-sm font-light">
-              {new Date().toLocaleDateString()}
-            </div>
-          </div>
-        </div>
-        <div className="h-3/4  w-full  flex flex-col items-center justify-center">
+        <div className="h-full  w-full  flex flex-col items-center justify-center">
           <h2 className="lg:text-2xl md:text-lg text-md font-semibold text-gray-600 tracking-wider">
             No Data available
           </h2>
@@ -38,24 +21,8 @@ const Sales = () => {
     );
   }
   return (
-    <div className="h-screen w-full">
-      <div className="w-full flex items-center justify-between shadow-xl p-4  mb-6">
-        <h4 className="font-semibold text-2xl text-gray-800">Order Summary</h4>
-        <div className="text-gray-600">
-          <div className="text-lg font-medium">
-            {new Date().toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </div>
-          <div className="text-sm font-light">
-            {new Date().toLocaleDateString()}
-          </div>
-        </div>
-      </div>
-
-      <div className="w-full  p-5 overflow-x-auto">
+    <div className=" w-full flex items-center justify-center">
+      <div className="w-11/12 lg:mt-24 mt-16 md:py-0 py-6  overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-800 shadow-sm shadow-violet-400  border">
           <thead className="bg-violet-500  text-white tracking-wider">
             <tr>
@@ -72,7 +39,9 @@ const Sales = () => {
             {salesList.map((sale, index) => (
               <tr key={index} className="hover:bg-gray-100">
                 <td className="border p-2 text-center">{index + 1}</td>
-                <td className="border p-2 font-medium ">{sale.customer.name}</td>
+                <td className="border p-2 font-medium ">
+                  {sale.customer.name}
+                </td>
                 <td className="">
                   {sale.products.map((name) => (
                     <span

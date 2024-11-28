@@ -96,32 +96,11 @@ const Products = () => {
   ];
 
   return (
-    <div className="h-full w-full">
-      <div className="w-full flex items-center justify-between shadow-xl p-4   mb-6">
-        <h4 className="font-semibold text-2xl text-gray-800">Products</h4>
-        <div className="text-gray-600">
-          <div className="text-lg font-medium">
-            {new Date().toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </div>
-          <div className="text-sm font-light">
-            {new Date().toLocaleDateString()}
-          </div>
-        </div>
-      </div>
-
-      <div className=" m-5 px-5 py-8 space-y-8 bg-white  shadow-sm shadow-violet-400 border">
-        <div className="">
-          <h5 className="font-semibold xl:text-3xl md:text-2xl text-xl">
-            Add Products ...
-          </h5>
-          <p className="text-gray-400  md:text-lg text-sm md:tracking-wider">
-            Add Products in your inventory
-          </p>
-        </div>
+    <div className=" w-full flex items-center justify-center md:py-0 py-6">
+      <div className="w-5/6 lg:mt-24 mt-16 px-5 py-6 space-y-8 bg-white  shadow-sm shadow-violet-400 border">
+        <p className="text-gray-400 md:text-lg text-sm md:tracking-wider">
+          Add Products in your inventory
+        </p>
         <Stepper
           stepsConfig={steps}
           handlerSave={handlerSave}

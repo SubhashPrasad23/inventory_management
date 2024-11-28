@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
+import Header from "./Header";
 
 const ProductsList = () => {
   const [product, setProduct] = useState([]);
@@ -11,40 +10,26 @@ const ProductsList = () => {
     const products = JSON.parse(localStorage.getItem("ProductList")) || [];
     setProduct(products);
 
-       products.forEach((product) => {
-         if (product.productQuantity < 5) {
-           toast.warn(`${product.productName} is low in stock!`, {
-             className: "toast-custom",
-             position: "top-right",
-             autoClose: 5000,
-             hideProgressBar: false,
-             closeOnClick: true,
-             pauseOnHover: true,
-             draggable: true,
-             progress: undefined,
-           });
-         }
-       });
-
-
+    products.forEach((product) => {
+      if (product.productQuantity < 5) {
+        toast.warn(`${product.productName} is low in stock!`, {
+          className: "toast-custom",
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    });
   }, []);
 
   if (!product.length) {
     return (
-      <div className="h-screen ">
-        <div className=" w-full flex items-center justify-between shadow-xl p-5">
-          <h4 className="font-semibold lg:text-2xl text-lg">Products</h4>
-          <div>
-            <div className="uppercase">
-              {new Date().toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: true,
-              })}
-            </div>
-            <div>{new Date().toLocaleDateString()}</div>
-          </div>
-        </div>
+      <div className="h-screen w-full">
+        {/* <Header /> */}
         <div className="h-3/4  w-full  flex flex-col items-center justify-center">
           <h2 className="lg:text-2xl md:text-lg text-md font-semibold text-gray-600 tracking-wider">
             No products available
@@ -64,24 +49,8 @@ const ProductsList = () => {
   }
 
   return (
-    <div className="h-full w-full">
-      <div className="w-full flex items-center justify-between shadow-xl p-4   mb-6">
-        <h4 className="font-semibold text-2xl text-gray-800">Products</h4>
-        <div className="text-gray-600">
-          <div className="text-lg font-medium">
-            {new Date().toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </div>
-          <div className="text-sm font-light">
-            {new Date().toLocaleDateString()}
-          </div>
-        </div>
-      </div>
-
-      <div className="w-full  p-5 overflow-x-auto">
+    <div className=" w-full flex items-center justify-center">
+      <div className="w-11/12 lg:mt-24 mt-16 md:py-0 py-6  overflow-x-auto">
         <table className="w-full shadow-sm shadow-violet-400 border border-collapse  ">
           <thead className="bg-violet-500  text-white tracking-wider ">
             <tr>

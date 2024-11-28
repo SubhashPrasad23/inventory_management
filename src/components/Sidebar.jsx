@@ -1,4 +1,3 @@
-import { IoMdLogOut } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import {
   FaTachometerAlt,
@@ -20,7 +19,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="h-full  2xl:w-2/12 lg:w-3/12 md:w-2/6 sm:w-2/6 w-[15%] fixed shadow-2xl  bg-violet-500 rounded-tr-3xl rounded-br-3xl transition-all">
+    <div className="h-full  2xl:w-2/12 lg:w-3/12 md:w-2/6 sm:w-2/6 w-[15%] fixed  bg-violet-500  transition-all">
       <div className=" drop-shadow-lg text-white  text-lg font-bold  sm:border-b-2  py-4 md:px-8 px-4">
         <h4 className="sm:block hidden md:text-xl text-lg font-semibold  tracking-widest">
           Inventory
@@ -38,7 +37,7 @@ const Sidebar = () => {
               to={`${item.path.toLowerCase()}`}
               key={index}
               className={({ isActive }) =>
-                `flex items-center hover:bg-violet-400 rounded-md text-white hover:text-white sm:p-4 p-2 ${
+                `flex items-center hover:bg-violet-400 rounded-md text-white hover:text-white p-1.5 ${
                   isActive ? "bg-violet-400 text-white " : ""
                 }`
               }
