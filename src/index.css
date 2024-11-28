@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+@media (max-width: 414px) {
+  .toast-custom {
+    width: 70% !important; 
+    margin:50px 0 0  auto;  
+  }
+}
