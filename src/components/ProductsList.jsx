@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./Header";
 
 const ProductsList = () => {
   const [product, setProduct] = useState([]);
@@ -13,7 +12,6 @@ const ProductsList = () => {
     products.forEach((product) => {
       if (product.productQuantity < 5) {
         toast.warn(`${product.productName} is low in stock!`, {
-          className: "toast-custom",
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -29,8 +27,7 @@ const ProductsList = () => {
   if (!product.length) {
     return (
       <div className="h-screen w-full">
-        {/* <Header /> */}
-        <div className="h-3/4  w-full  flex flex-col items-center justify-center">
+        <div className="h-full w-full  flex flex-col items-center justify-center">
           <h2 className="lg:text-2xl md:text-lg text-md font-semibold text-gray-600 tracking-wider">
             No products available
           </h2>

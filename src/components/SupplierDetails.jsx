@@ -7,7 +7,7 @@ const SupplierDetails = ({ Details, handleChange }) => {
       <h6 className="font-semibold lg:text-3xl md:text-xl text-lg tracking-wider text-gray-500">
         Supplier Details
       </h6>
-      <div className="grid grid-cols-3 gap-5 mt-5">
+      <div className="grid lg:grid-cols-2 lg:gap-5 gap-3 mt-5">
         <input
           type="text"
           placeholder="Supplier ID"

@@ -1,5 +1,3 @@
-// import React from "react";
-// import StepperControl from "./StepperControl";
 import Stepper from "./Stepper";
 import ProductDetails from "./ProductDetails";
 import SupplierDetails from "./SupplierDetails";
@@ -96,8 +94,8 @@ const Products = () => {
   ];
 
   return (
-    <div className=" w-full flex items-center justify-center md:py-0 py-6">
-      <div className="w-5/6 lg:mt-24 md:mt-20 mt-12 px-5 py-6 space-y-8 bg-white  shadow-sm shadow-violet-400 border">
+    <div className="h-full  w-full flex items-center justify-center md:py-0 py-6 px-5">
+      <div className=" md:w-5/6 w-full lg:mt-24 md:mt-20 mt-12 px-5 py-6 space-y-8 bg-white  shadow-sm shadow-violet-400 border">
         <p className="text-gray-400 md:text-lg text-sm md:tracking-wider">
           Add Products in your inventory
         </p>

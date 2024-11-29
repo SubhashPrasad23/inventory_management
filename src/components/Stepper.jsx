@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -84,7 +83,7 @@ const Stepper = ({
                 index + 1
               )}
             </div>
-            <div className="  space-x-5 xl:text-xl  md:text-lg  text-[9px] font-semibold tracking-wider">
+            <div className="space-x-5 xl:text-xl  md:text-lg  text-[9px] md:font-semibold tracking-wider">
               {step.name}
             </div>
           </div>

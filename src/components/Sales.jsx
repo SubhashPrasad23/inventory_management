@@ -5,18 +5,11 @@ import { useEffect, useState } from "react";
 const Sales = () => {
   const [salesList, setSalesList] = useState([]);
 
-
-
-
   useEffect(() => {
     const getSalesData = JSON.parse(localStorage.getItem("Sales")) || [];
     setSalesList(getSalesData);
   }, []);
 
-
-
-
-  
   if (!salesList.length) {
     return (
       <div className="h-screen ">

@@ -1,4 +1,3 @@
-import React from "react";
 
 const Complete = ({ productDetails, supplierDetails }) => {
   return (
@@ -9,8 +8,6 @@ const Complete = ({ productDetails, supplierDetails }) => {
       <p className="text-gray-600 mt-2 md:text-base text-xs">
         Please review the details below before completing the process.
       </p>
-
-      {/* Product Details Summary */}
       <div className="mt-5">
         <h5 className="font-semibold md:text-xl text-lg">Product Details</h5>
         <div className="mt-2 space-y-2">
@@ -24,7 +21,7 @@ const Complete = ({ productDetails, supplierDetails }) => {
             <strong>Quantity:</strong> {productDetails.productQuantity || "N/A"}
           </p>
           <p>
-            <strong>Price:</strong> ${productDetails.productPrice || "N/A"}
+            <strong>Price:</strong> Rs {productDetails.productPrice || "N/A"}
           </p>
           <p>
             <strong>Company Name:</strong> {productDetails.companyName || "N/A"}
@@ -45,8 +42,6 @@ const Complete = ({ productDetails, supplierDetails }) => {
           </p>
         </div>
       </div>
-
-      {/* Final Message */}
       <div className="mt-8">
         <p className="text-green-600 font-semibold">
           Everything looks good! Click **Save** to finalize.

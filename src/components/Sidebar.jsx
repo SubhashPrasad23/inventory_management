@@ -24,7 +24,6 @@ const Sidebar = () => {
         <h4 className="sm:block hidden md:text-xl text-lg font-semibold  tracking-widest">
           Inventory
         </h4>
-        
         <span className="sm:block hidden tracking-wider xl:text-3xl lg:text-2xl text-xl">
           Management
         </span>
