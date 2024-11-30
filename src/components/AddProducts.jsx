@@ -94,7 +94,7 @@ const Products = () => {
   ];
 
   return (
-    <div className="h-full  w-full flex justify-center  py-6 px-4 ">
+    <div className="h-full w-full flex justify-center  py-6 px-4 ">
       <div className=" md:w-5/6 w-full md:mt-16 mt-12 p-5 space-y-6 bg-white  shadow-sm shadow-violet-400 border">
         <p className="text-gray-400 md:text-lg text-sm md:tracking-wider">
           Add Products in your inventory

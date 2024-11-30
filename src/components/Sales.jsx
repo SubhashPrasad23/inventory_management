@@ -22,8 +22,8 @@ const Sales = () => {
     );
   }
   return (
-    <div className=" w-full flex items-center justify-center">
-      <div className="w-11/12 lg:mt-24 md:mt-20 mt-12 md:py-0 py-6  overflow-x-auto">
+    <div className="h-full  w-full flex justify-center  py-6 px-4 ">
+      <div className="w-11/12 md:mt-16 mt-12 overflow-x-auto">
         <table className="w-full text-sm text-left text-gray-800 shadow-sm shadow-violet-400  border">
           <thead className="bg-violet-500  text-white tracking-wider">
             <tr>
