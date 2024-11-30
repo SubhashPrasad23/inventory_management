@@ -136,16 +136,15 @@ const Billing = () => {
   };
 
   return (
-    <div>
-      <div className="w-full flex justify-center md:py-0 py-6 px-5">
-        <div className="w-full md:w-5/6 lg:mt-24 md:mt-20 mt-12 p-5 bg-white shadow-sm shadow-violet-400  border border-gray-200">
+      <div className="w-full min-h-screen flex justify-center  py-6 px-4 ">
+        <div className="w-full  md:w-5/6  md:mt-16 mt-12 p-5 bg-white shadow-sm shadow-violet-400  border border-gray-200">
           <h2 className="lg:text-2xl md:text-xl text-lg font-semibold text-gray-800 mb-6">
             Bill To
           </h2>
           <div className="w-full mb-6">
             <div className="md:text-end  h-full ">
               <label className="font-semibold tracking-wider text-sm">
-                DATE{" "}
+                DATE
               </label>
               <input
                 type="text"
@@ -296,7 +295,6 @@ const Billing = () => {
             </button>
           </div>
         </div>
-      </div>
       <ToastContainer />
     </div>
   );

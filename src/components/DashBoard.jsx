@@ -37,9 +37,9 @@ const summaryData = [
 
 
   return (
-    <div className=" w-full flex items-center justify-center">
-      <div className=" w-11/12 lg:mt-24 md:mt-20 mt-12 md:py-0 py-6 flex justify-center ">
-        <div className="w-full h-full grid 2xl:grid-cols-3 xl:grid-cols-2 grid-cols-1 gap-10">
+    <div className=" w-full flex justify-center py-6 px-4 ">
+      <div className=" w-11/12  md:mt-16 mt-12 flex justify-center ">
+        <div className="w-full h-full grid 2xl:grid-cols-3 xl:grid-cols-2 grid-cols-1 gap-5">
           {summaryData.map((data) => (
             <div
               key={data.name}
