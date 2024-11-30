@@ -137,7 +137,7 @@ const Billing = () => {
 
   return (
       <div className="w-full min-h-screen flex justify-center  py-6 px-4 ">
-        <div className="w-full  md:w-5/6  md:mt-16 mt-12 p-5 bg-white shadow-sm shadow-violet-400  border border-gray-200">
+        <div className="w-full h-full md:w-5/6  md:mt-16 mt-12 p-5 bg-white shadow-sm shadow-violet-400  border border-gray-200">
           <h2 className="lg:text-2xl md:text-xl text-lg font-semibold text-gray-800 mb-6">
             Bill To
           </h2>
