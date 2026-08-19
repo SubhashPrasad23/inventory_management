@@ -7,7 +7,6 @@ import { PLANS } from "../utils/data";
 const Settings = () => {
   const { user, setUser } = useAuthStore();
   const [formData, setFormData] = useState({
-    name: user?.name || "",
     shopName: user?.shopName || "",
     shopType: user?.shopType || "retailer",
     phone: user?.phone || "",
@@ -23,7 +22,7 @@ const Settings = () => {
       const { data } = await API.put("/auth/profile", formData);
       setUser({ ...user, ...data });
       toast.success("Profile updated!");
-    } catch (error) {
+    } catch {
       toast.error("Failed to update profile");
     } finally {
       setSaving(false);
@@ -35,7 +34,7 @@ const Settings = () => {
       const { data } = await API.put("/auth/upgrade-plan", { plan });
       setUser({ ...user, plan: data.user.plan });
       toast.success(`Plan upgraded to ${plan}!`);
-    } catch (error) {
+    } catch {
       toast.error("Failed to upgrade plan");
     }
   };
@@ -48,15 +47,6 @@ const Settings = () => {
       <div className="card p-6">
         <h2 className="text-lg font-semibold text-slate-700 mb-4">Shop Profile</h2>
         <form onSubmit={handleSaveProfile} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-600 mb-1">Your Name</label>
-            <input
-              type="text"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="input-field"
-            />
-          </div>
           <div>
             <label className="block text-sm font-medium text-slate-600 mb-1">Shop Name</label>
             <input

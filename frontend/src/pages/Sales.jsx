@@ -88,7 +88,7 @@ const Sales = () => {
 
       {/* Search + Date Filters */}
       <div className="flex flex-col md:flex-row gap-3">
-        <div className="relative flex-1">
+        <div className="relative flex-1 min-w-0">
           <HiOutlineSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
             type="text"
@@ -98,19 +98,19 @@ const Sales = () => {
             placeholder="Search by customer or invoice..."
           />
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-wrap gap-2 items-center">
           <input
             type="date"
             value={startDate}
             onChange={(e) => { setStartDate(e.target.value); setCurrentPage(1); }}
-            className="input-field text-xs w-36"
+            className="input-field text-xs flex-1 min-w-[130px] max-w-[160px]"
           />
           <span className="text-xs text-gray-400">to</span>
           <input
             type="date"
             value={endDate}
             onChange={(e) => { setEndDate(e.target.value); setCurrentPage(1); }}
-            className="input-field text-xs w-36"
+            className="input-field text-xs flex-1 min-w-[130px] max-w-[160px]"
           />
           {(startDate || endDate || searchTerm) && (
             <button onClick={clearFilters} className="text-xs text-red-500 hover:text-red-700 font-medium whitespace-nowrap">

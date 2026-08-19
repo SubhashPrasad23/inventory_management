@@ -47,13 +47,13 @@ const Purchases = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="page-title">Purchases</h1>
         <div className="flex gap-2">
-          <button onClick={getAiPurchaseSuggestion} disabled={suggestLoading} className="btn-secondary text-xs flex items-center gap-1 disabled:opacity-50">
+          <button onClick={getAiPurchaseSuggestion} disabled={suggestLoading} className="btn-secondary text-xs flex items-center gap-1 disabled:opacity-50 whitespace-nowrap">
             {suggestLoading ? "Thinking..." : "AI Suggest"}
           </button>
-          <button onClick={() => setShowForm(true)} className="btn-primary flex items-center gap-2">
+          <button onClick={() => setShowForm(true)} className="btn-primary flex items-center gap-2 whitespace-nowrap">
             <HiOutlinePlus className="w-4 h-4" />
             Add Purchase
           </button>
