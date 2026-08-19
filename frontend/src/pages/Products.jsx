@@ -60,10 +60,10 @@ const Products = () => {
   };
 
   return (
-    <div className="space-y-5">
-      <div className="flex items-center justify-between">
-        <h1 className="page-title">Products ({totalProducts})</h1>
-        <button onClick={() => setShowAddForm(true)} className="btn-primary flex items-center gap-2">
+    <div className="space-y-5 min-w-0">
+      <div className="flex items-center justify-between gap-3">
+        <h1 className="page-title whitespace-nowrap">Products ({totalProducts})</h1>
+        <button onClick={() => setShowAddForm(true)} className="btn-primary flex items-center gap-2 whitespace-nowrap">
           <HiOutlinePlus className="w-4 h-4" /> Add Product
         </button>
       </div>
@@ -80,7 +80,7 @@ const Products = () => {
       ) : (
         <div className="card overflow-hidden">
           <div className="overflow-x-auto max-h-[70vh] overflow-y-auto">
-            <table className="w-full min-w-[700px] text-sm">
+            <table className="w-full min-w-[800px] text-sm">
               <thead className="bg-gray-50 border-b sticky top-0">
                 <tr className="text-left text-gray-600 text-xs">
                   <th className="px-4 py-3 font-medium whitespace-nowrap">Product</th>
@@ -106,7 +106,7 @@ const Products = () => {
                       <td className="px-4 py-3 text-xs">₹{product.purchasePrice}</td>
                       <td className="px-4 py-3 text-teal-700 font-medium text-xs">₹{product.salePrice}</td>
                       <td className="px-4 py-3">
-                        <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${badge.color}`}>{badge.label}</span>
+                        <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full whitespace-nowrap ${badge.color}`}>{badge.label}</span>
                       </td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-1.5">

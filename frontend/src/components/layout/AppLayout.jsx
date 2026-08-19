@@ -38,7 +38,7 @@ const AppLayout = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 lg:ml-[250px]">
+      <div className="flex-1 lg:ml-[250px] min-w-0 overflow-x-hidden">
         <header className="h-14 bg-white border-b border-gray-200 flex items-center justify-between px-4 sticky top-0 z-20">
           <button
             onClick={() => setSidebarOpen(true)}
