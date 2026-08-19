@@ -8,8 +8,8 @@ import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 
 
 const Login = () => {
-  const [email, setEmail] = useState("hey@gmail.com");
-  const [password, setPassword] = useState("12345678");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { setUser } = useAuthStore();
   const navigate = useNavigate();
