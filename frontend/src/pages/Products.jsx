@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { HiOutlinePlus, HiOutlineSearch, HiOutlineTrash, HiOutlinePencil } from "react-icons/hi";
 import EditProductModal from "../components/modals/EditProductModal";
 import AddProductModal from "../components/modals/AddProductModal";
+import Loading from "../components/Loading";
 import API from "../api/axios";
 import toast from "react-hot-toast";
 
@@ -13,9 +14,11 @@ const Products = () => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [editProduct, setEditProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
   const searchTimeout = useRef(null);
 
   const fetchProducts = async (page = currentPage, search = searchTerm) => {
+    setLoading(true);
     try {
       let url = `/products?page=${page}&limit=20`;
       if (search) url += `&search=${search}`;
@@ -25,6 +28,8 @@ const Products = () => {
       setTotalProducts(data.totalProducts || 0);
     } catch {
       toast.error("Failed to load products");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,6 +63,8 @@ const Products = () => {
     if (product.quantity <= product.minStockLevel) return { label: "Low Stock", color: "bg-yellow-100 text-yellow-700" };
     return { label: "In Stock", color: "bg-green-100 text-green-700" };
   };
+
+  if (loading && products.length === 0) return <Loading />;
 
   return (
     <div className="space-y-5 min-w-0">

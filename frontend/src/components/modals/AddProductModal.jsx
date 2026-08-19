@@ -134,9 +134,9 @@ const AddProductModal = ({ onClose, onAdded }) => {
   };
 
   return createPortal(
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999] p-4" onClick={onClose}>
-      <div className="bg-white rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto relative" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start sm:items-center justify-center z-[9999] p-0 sm:p-4" onClick={onClose}>
+      <div className="bg-white sm:rounded-xl p-4 sm:p-6 w-full sm:max-w-lg h-full sm:h-auto sm:max-h-[90vh] overflow-y-auto relative" onClick={(e) => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-3 right-3 sm:top-4 sm:right-4 p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition">
           <HiOutlineX className="w-5 h-5" />
         </button>
 
@@ -147,23 +147,23 @@ const AddProductModal = ({ onClose, onAdded }) => {
           <button
             type="button"
             onClick={() => { setScanMode("camera"); setShowScanner(true); setHardwareScanActive(false); }}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition ${scanMode === "camera" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
+            className={`flex-1 flex items-center justify-center gap-1 sm:gap-1.5 py-2 rounded-md text-[11px] sm:text-xs font-medium transition ${scanMode === "camera" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
           >
-            <HiOutlineCamera className="w-3.5 h-3.5" /> Scan Barcode
+            <HiOutlineCamera className="w-3.5 h-3.5" /> <span>Scan Barcode</span>
           </button>
           <button
             type="button"
             onClick={() => { setScanMode("upload"); setShowScanner(false); setHardwareScanActive(false); }}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition ${scanMode === "upload" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
+            className={`flex-1 flex items-center justify-center gap-1 sm:gap-1.5 py-2 rounded-md text-[11px] sm:text-xs font-medium transition ${scanMode === "upload" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
           >
-            <HiOutlineUpload className="w-3.5 h-3.5" /> Upload Image
+            <HiOutlineUpload className="w-3.5 h-3.5" /> <span>Upload Image</span>
           </button>
           <button
             type="button"
             onClick={() => { setScanMode("hardware"); setShowScanner(false); setHardwareScanActive(true); }}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition ${scanMode === "hardware" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
+            className={`flex-1 flex items-center justify-center gap-1 sm:gap-1.5 py-2 rounded-md text-[11px] sm:text-xs font-medium transition ${scanMode === "hardware" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
           >
-            <HiOutlineQrcode className="w-3.5 h-3.5" /> Barcode Gun
+            <HiOutlineQrcode className="w-3.5 h-3.5" /> <span>Barcode Gun</span>
           </button>
         </div>
 
