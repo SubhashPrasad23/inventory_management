@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { HiOutlineX, HiOutlineCamera, HiOutlineUpload } from "react-icons/hi";
+import { HiOutlineX, HiOutlineCamera, HiOutlineUpload, HiOutlineQrcode } from "react-icons/hi";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { BrowserMultiFormatReader } from "@zxing/browser";
 import API from "../../api/axios";
@@ -10,6 +10,7 @@ import { PRODUCT_CATEGORIES, PRODUCT_UNITS } from "../../utils/data";
 const AddProductModal = ({ onClose, onAdded }) => {
   const [scanMode, setScanMode] = useState("camera");
   const [showScanner, setShowScanner] = useState(false);
+  const [hardwareScanActive, setHardwareScanActive] = useState(false);
   const scannerRef = useRef(null);
   const fileInputRef = useRef(null);
   const [loading, setLoading] = useState(false);
@@ -26,14 +27,17 @@ const AddProductModal = ({ onClose, onAdded }) => {
     expiryDate: "",
   });
 
-  // Scanner
+  // Camera Scanner
   useEffect(() => {
-    if (showScanner) {
+    if (showScanner && scanMode === "camera") {
       const scanner = new Html5QrcodeScanner("add-product-scanner-modal", {
         fps: 10,
         qrbox: { width: 250, height: 150 },
         rememberLastUsedCamera: true,
         showTorchButtonIfSupported: true,
+        videoConstraints: {
+          facingMode: "environment",
+        },
       });
       scanner.render(
         (decodedText) => {
@@ -48,7 +52,30 @@ const AddProductModal = ({ onClose, onAdded }) => {
       scannerRef.current = scanner;
       return () => { try { scannerRef.current?.clear(); } catch {} };
     }
-  }, [showScanner]);
+  }, [showScanner, scanMode]);
+
+  useEffect(() => {
+    if (hardwareScanActive) {
+      let barcode = "";
+      let timeout = null;
+
+      const handleKeyDown = (e) => {
+        if (timeout) clearTimeout(timeout);
+        if (e.key === "Enter" && barcode.length > 3) {
+          setFormData((prev) => ({ ...prev, barcode }));
+          toast.success(`Barcode detected: ${barcode}`);
+          fetchProductByBarcode(barcode);
+          barcode = "";
+          return;
+        }
+        if (e.key.length === 1) barcode += e.key;
+        timeout = setTimeout(() => { barcode = ""; }, 100);
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+      return () => window.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [hardwareScanActive]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -115,15 +142,28 @@ const AddProductModal = ({ onClose, onAdded }) => {
 
         <h2 className="text-lg font-bold text-gray-900 mb-4">Add New Product</h2>
 
-        {/* Scan Mode Toggle */}
+        {/* Scan Mode Tabs */}
         <div className="flex gap-1 mb-5 p-1 bg-gray-100 rounded-lg">
-          <button type="button" onClick={() => { setScanMode("camera"); setShowScanner(true); }}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition ${scanMode === "camera" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}>
-            <HiOutlineCamera className="w-3.5 h-3.5" /> Camera
+          <button
+            type="button"
+            onClick={() => { setScanMode("camera"); setShowScanner(true); setHardwareScanActive(false); }}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition ${scanMode === "camera" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
+          >
+            <HiOutlineCamera className="w-3.5 h-3.5" /> Scan Barcode
           </button>
-          <button type="button" onClick={() => { setScanMode("upload"); setShowScanner(false); }}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition ${scanMode === "upload" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}>
+          <button
+            type="button"
+            onClick={() => { setScanMode("upload"); setShowScanner(false); setHardwareScanActive(false); }}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition ${scanMode === "upload" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
+          >
             <HiOutlineUpload className="w-3.5 h-3.5" /> Upload Image
+          </button>
+          <button
+            type="button"
+            onClick={() => { setScanMode("hardware"); setShowScanner(false); setHardwareScanActive(true); }}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-md text-xs font-medium transition ${scanMode === "hardware" ? "bg-white shadow text-gray-800" : "text-gray-500"}`}
+          >
+            <HiOutlineQrcode className="w-3.5 h-3.5" /> Barcode Gun
           </button>
         </div>
 
@@ -150,6 +190,20 @@ const AddProductModal = ({ onClose, onAdded }) => {
             {formData.barcode && (
               <div className="mt-3 p-2 bg-green-50 border border-green-200 rounded">
                 <span className="text-xs text-green-700 font-medium">Detected: {formData.barcode}</span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Barcode Gun Mode */}
+        {scanMode === "hardware" && (
+          <div className="mb-5 p-4 bg-green-50 border border-green-200 rounded-lg text-center">
+            <HiOutlineQrcode className="w-8 h-8 text-green-600 mx-auto mb-2" />
+            <p className="text-sm font-medium text-green-800">Barcode Gun Active</p>
+            <p className="text-xs text-green-600">Scan product barcode — it will auto-fill details</p>
+            {formData.barcode && (
+              <div className="mt-3 p-2 bg-green-100 border border-green-300 rounded">
+                <span className="text-xs text-green-800 font-medium">Scanned: {formData.barcode}</span>
               </div>
             )}
           </div>

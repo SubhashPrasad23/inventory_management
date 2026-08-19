@@ -17,6 +17,9 @@ const BarcodeScanner = ({ onScan, id = "barcode-scanner" }) => {
         fps: 10,
         qrbox: { width: 250, height: 150 },
         rememberLastUsedCamera: true,
+        videoConstraints: {
+          facingMode: "environment",
+        },
       });
 
       scanner.render(
